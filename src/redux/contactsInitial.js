@@ -1,10 +1,19 @@
 export const INITIAL_STATE = {
-    contacts: {
-      items: [],
-      loading: false,
-      error: null
+  contacts: {
+    items: [],
+    loading: false,
+    error: null,
+  },
+  filters: {
+    name: "",
+  },
+  auth: {
+    user: {
+      name: null,
+      email: null,
     },
-    filters: {
-          name: ""
-      }
-  };
+    token: null,
+    isLoggedIn: false,
+    isRefreshing: false,
+  },
+};
