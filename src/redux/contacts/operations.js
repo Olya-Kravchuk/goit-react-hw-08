@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../../service/api';
+import { number } from 'yup';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -37,3 +38,15 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const updateContact = createAsyncThunk(
+  "contacts/updateContact",
+  async ({id, name, number}, thunkAPI) => {
+    try {
+      const {data} = await instance.patch(`/contacts/${id}`, {name, number});
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
